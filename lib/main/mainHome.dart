@@ -1,11 +1,10 @@
 // 메인
 
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../subPage/subPage.dart';
+import '../subPage/subPage_1.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -18,9 +17,7 @@ class MyhomePageState extends State<MyHomePage> {
   int numbers = 0;
   int currentIndex = 0;
 
-
   // 네비 게이션
-
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +61,29 @@ class MyhomePageState extends State<MyHomePage> {
                   TextButton(onPressed: () {}, child: Text('기본 글자 버튼')),
                   OutlinedButton(onPressed: () {}, child: Text('아웃 라인 버튼')),
                 ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                      onPressed: () {
+                        // 페이지 이동
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => subPage_1()));
+                      },
+                      child: Text('서브페이지_2')),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      width: 173,
+                      height: 173,
+                      child: Image.asset('assets/image/image_2.png'))
+                ],
               )
             ],
           ),
@@ -87,76 +107,87 @@ class MyhomePageState extends State<MyHomePage> {
         ),
         bottomNavigationBar: BottomAppBar(
           color: Colors.white,
-            height: 100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                    onPressed: () {
-                      print('홈');
-                      // 페이지 이동
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => MyHomePage()));
-                    },
-                    iconSize: 100,
-                    icon: Column(
-                      children: [
-                        Icon(
-                          Icons.home,
-                          size: 25,
-                        ),
-                        Text(
-                          '홈',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    )),
-                IconButton(
-                    onPressed: () {
-                      // 페이지 이동
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => SubPage()));
-                    },
-                    icon: Column(
-                      children: [
-                        Icon(Icons.accessibility,size: 25,),
-                        Text(
-                          '서브 페이지',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                        )
-                      ],
+          height: 100,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                  onPressed: () {
+                    print('홈');
+                    // 페이지 이동
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MyHomePage()));
+                  },
+                  iconSize: 100,
+                  icon: Column(
+                    children: [
+                      Icon(
+                        Icons.home,
+                        size: 25,
+                      ),
+                      Text(
+                        '홈',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  )),
+              IconButton(
+                  onPressed: () {
+                    // 페이지 이동
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SubPage()));
+                  },
+                  icon: Column(
+                    children: [
+                      Icon(
+                        Icons.accessibility,
+                        size: 25,
+                      ),
+                      Text(
+                        '서브 페이지',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  )),
+              IconButton(
+                onPressed: () {},
+                icon: Column(
+                  children: [
+                    Icon(
+                      Icons.person,
+                      size: 25,
+                    ),
+                    Text(
+                      '내 정보',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     )
+                  ],
                 ),
-                IconButton(
+              ),
+              IconButton(
                   onPressed: () {},
                   icon: Column(
                     children: [
-                      Icon(Icons.person,size: 25,),
-                      Text(
-                        '내 정보',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      )
+                      Column(
+                        children: [
+                          Icon(
+                            Icons.settings,
+                            size: 25,
+                          ),
+                          Text(
+                            '설정',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
                     ],
-                  ),
-                ),
-                IconButton(
-                    onPressed: () {},
-                    icon: Column(
-                      children: [
-                        Column(
-                          children: [
-                            Icon(Icons.settings,size: 25,),
-                            Text(
-                              '설정',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        ),
-                      ],
-                    )
-                ),
-              ],
-            ),
+                  )),
+            ],
+          ),
         ));
   }
 }
